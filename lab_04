@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyMBKCNpxepSrff8PZlFUNmu",
+      "authorship_tag": "ABX9TyNBZcDBWWPaS0v+FyxltRz8",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -47,7 +47,7 @@
       "metadata": {
         "id": "yIvPd_IzvnDX"
       },
-      "execution_count": 2,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -64,7 +64,7 @@
         "id": "Ch-ZIu3GwW1W",
         "outputId": "ad91b38e-57a9-460b-9689-2edd53b59f22"
       },
-      "execution_count": 5,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -422,7 +422,7 @@
         "id": "hGL4a9vnyXV8",
         "outputId": "1f92db43-f1e7-4ed9-eee0-3e9cd5733ef5"
       },
-      "execution_count": 6,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -470,7 +470,7 @@
         "id": "EGwpdkgS2ztT",
         "outputId": "c9421ac5-b90e-4b0d-c340-b8e628b6a2f2"
       },
-      "execution_count": 10,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -909,7 +909,7 @@
         "id": "gwn1QLLl3-wY",
         "outputId": "17408c48-71d9-4f84-80f6-404af8b0981a"
       },
-      "execution_count": 12,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -957,7 +957,7 @@
         "id": "UjZ8vNH44tqc",
         "outputId": "43138390-7da2-4840-8806-a824dbbaf26a"
       },
-      "execution_count": 14,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1006,7 +1006,7 @@
         "id": "JnuHnFza5OD4",
         "outputId": "ed66901e-db6c-4c31-dc69-980b6804daa4"
       },
-      "execution_count": 16,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1047,7 +1047,7 @@
         "id": "D0-IFf5t6S0A",
         "outputId": "c27cde56-4258-48eb-958b-e713c622f404"
       },
-      "execution_count": 17,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1093,7 +1093,7 @@
         "id": "cblWfHQ97KhI",
         "outputId": "8f003304-679b-4135-998a-f99b273fb822"
       },
-      "execution_count": 18,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1510,7 +1510,7 @@
         "id": "i2q0qLdC7a40",
         "outputId": "cb08e055-0911-4356-950b-7273626b1477"
       },
-      "execution_count": 19,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1555,7 +1555,7 @@
         "id": "Rb-r5j0e8MKa",
         "outputId": "c44fc19f-f0f7-40ef-f7f7-e36559fa6f5e"
       },
-      "execution_count": 20,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -1602,7 +1602,7 @@
         "id": "oflCPx9Q9POu",
         "outputId": "23d7cfa0-e992-4131-81a6-df2c95fd1459"
       },
-      "execution_count": 21,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1632,7 +1632,7 @@
         "id": "_3OqR-uE9WLU",
         "outputId": "59f1e5e0-ccea-4887-a930-a578b6ec74da"
       },
-      "execution_count": 24,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -1673,7 +1673,7 @@
       "metadata": {
         "id": "WIHF9K5--HNW"
       },
-      "execution_count": 25,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -1689,7 +1689,7 @@
         "id": "Mo947REy-eNE",
         "outputId": "87803982-19c6-468a-c9d8-4a34515579a9"
       },
-      "execution_count": 26,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -1714,7 +1714,7 @@
         "id": "8d0nYXZY_EXt",
         "outputId": "96f0aefb-1951-45f6-ebb4-a39fa317c525"
       },
-      "execution_count": 27,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -2046,7 +2046,7 @@
         "id": "Ata4YdlJAhUw",
         "outputId": "8afe64f0-3d39-48e2-b420-e8eac9a48886"
       },
-      "execution_count": 28,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -2138,7 +2138,7 @@
       "metadata": {
         "id": "B8vIoECtA6u4"
       },
-      "execution_count": 29,
+      "execution_count": 7,
       "outputs": []
     },
     {
@@ -2153,13 +2153,30 @@
     {
       "cell_type": "code",
       "source": [
-        "X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=123)"
+        " X_train, X_test, y_train, y_test = train_test_split(X, y,test_size = 0.2,random_state = 123)"
       ],
       "metadata": {
-        "id": "m3B9mMm-BTv9"
+        "id": "m3B9mMm-BTv9",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 164
+        },
+        "outputId": "543f9175-36dd-4f8b-a810-e082a43d03b2"
       },
-      "execution_count": 30,
-      "outputs": []
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'X' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-11-c8be5670f767>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mX_train\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mX_test\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0my_train\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0my_test\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mtrain_test_split\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mX\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0my\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mtest_size\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m0.2\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mrandom_state\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m123\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'X' is not defined"
+          ]
+        }
+      ]
     },
     {
       "cell_type": "code",
@@ -2168,22 +2185,24 @@
       ],
       "metadata": {
         "colab": {
-          "base_uri": "https://localhost:8080/"
+          "base_uri": "https://localhost:8080/",
+          "height": 146
         },
         "id": "ULpga8XwBm__",
-        "outputId": "428561d2-1d41-4cde-8146-8b27ed6c6543"
+        "outputId": "e5f01096-719b-49dd-a305-de8c05f0fed1"
       },
-      "execution_count": 31,
+      "execution_count": 6,
       "outputs": [
         {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "((13600,), (3400,), (13600, 6), (3400, 6))"
-            ]
-          },
-          "metadata": {},
-          "execution_count": 31
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'y_train' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-6-54ee98b29848>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0my_train\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0my_test\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mX_train\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mX_test\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'y_train' is not defined"
+          ]
         }
       ]
     },
@@ -2199,13 +2218,33 @@
     {
       "cell_type": "code",
       "source": [
-        "print(\"Training \")"
+        "print(\"Training feature set size:\",X_train.shape)\n",
+        "print(\"Test feature set size:\",X_test.shape)\n",
+        "print(\"Training variable set size:\",y_train.shape)\n",
+        "print(\"Test variable set size:\",y_test.shape)"
       ],
       "metadata": {
-        "id": "9rzT4lAUCCws"
+        "id": "9rzT4lAUCCws",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 200
+        },
+        "outputId": "8c950b8f-a10c-4a8a-ce58-732e3736093c"
       },
-      "execution_count": null,
-      "outputs": []
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'X_train' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-4-35d64ecb6526>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Training feature set size:\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mX_train\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Test feature set size:\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mX_test\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Training variable set size:\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0my_train\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Test variable set size:\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0my_test\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'X_train' is not defined"
+          ]
+        }
+      ]
     }
   ]
 }
