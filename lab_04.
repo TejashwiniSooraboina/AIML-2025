@@ -59,7 +59,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 226
+          "height": 206
         },
         "id": "Ch-ZIu3GwW1W",
         "outputId": "edc3b3de-8632-4adb-e2bd-cf3fbb6286da"
@@ -465,7 +465,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 383
+          "height": 363
         },
         "id": "EGwpdkgS2ztT",
         "outputId": "a276ca5b-4ddf-4d7c-92a0-2413fa7e4048"
@@ -952,7 +952,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 671
+          "height": 1000
         },
         "id": "UjZ8vNH44tqc",
         "outputId": "92002182-af00-4f4b-a431-026669723a94"
@@ -1001,7 +1001,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 391
+          "height": 428
         },
         "id": "JnuHnFza5OD4",
         "outputId": "ebe647cc-8a63-4a37-d683-d1d7a561fa60"
@@ -1088,7 +1088,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 351
+          "height": 331
         },
         "id": "cblWfHQ97KhI",
         "outputId": "780f98e2-1915-4652-b141-a4bbc882d85e"
@@ -1505,7 +1505,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 537
+          "height": 755
         },
         "id": "i2q0qLdC7a40",
         "outputId": "2c2d606e-9560-4b00-e711-d98c71a0b76a"
@@ -1709,7 +1709,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 226
+          "height": 206
         },
         "id": "8d0nYXZY_EXt",
         "outputId": "97b650a7-28b6-4c4d-8011-f6ee0a14840c"
@@ -2793,7 +2793,7 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 399
+          "height": 838
         },
         "id": "oftRPOU4xB97",
         "outputId": "d49c010e-b080-4e3e-f29b-59c6fd7a7cb2"
@@ -2880,11 +2880,11 @@
         "print (\"Size of the predicted object:\", predictions.shape)"
       ],
       "metadata": {
-        "id": "56wfFTGEwUAu",
-        "outputId": "7455122a-6359-41fc-f206-9a020d1605dd",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "56wfFTGEwUAu",
+        "outputId": "7455122a-6359-41fc-f206-9a020d1605dd"
       },
       "execution_count": 39,
       "outputs": [
@@ -2919,12 +2919,12 @@
         "plt.scatter(x=y_test,y=predictions)"
       ],
       "metadata": {
-        "id": "OOZ4gWkkwfls",
-        "outputId": "890abab6-357a-42da-cb46-bd42b1ec1629",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 494
-        }
+          "height": 682
+        },
+        "id": "OOZ4gWkkwfls",
+        "outputId": "890abab6-357a-42da-cb46-bd42b1ec1629"
       },
       "execution_count": 40,
       "outputs": [
@@ -2970,12 +2970,12 @@
         "sns.histplot([y_test-predictions])"
       ],
       "metadata": {
-        "id": "-uoYAwRCwtMk",
-        "outputId": "f49c0430-4273-4563-ed37-492eaf30ab0e",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 529
-        }
+          "height": 682
+        },
+        "id": "-uoYAwRCwtMk",
+        "outputId": "f49c0430-4273-4563-ed37-492eaf30ab0e"
       },
       "execution_count": 41,
       "outputs": [
@@ -3020,12 +3020,12 @@
         "plt.scatter(x=predictions,y=y_test-predictions)"
       ],
       "metadata": {
-        "id": "d88ilLGbx-Gk",
-        "outputId": "870aeacf-eaea-4169-cd8a-9c5da3c879ca",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 479
-        }
+          "height": 722
+        },
+        "id": "d88ilLGbx-Gk",
+        "outputId": "870aeacf-eaea-4169-cd8a-9c5da3c879ca"
       },
       "execution_count": 42,
       "outputs": [
@@ -3068,11 +3068,11 @@
         "print(\"Root mean square error (RMSE):\", np.sqrt(metrics.mean_squared_error(y_test,predictions)))"
       ],
       "metadata": {
-        "id": "AMXaRCJbyF9P",
-        "outputId": "7df41abb-be57-474d-a54a-6175632b6508",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "AMXaRCJbyF9P",
+        "outputId": "7df41abb-be57-474d-a54a-6175632b6508"
       },
       "execution_count": 43,
       "outputs": [
@@ -3102,11 +3102,11 @@
         "print(\"R-squared value of predictions:\",round(metrics.r2_score(y_test,predictions),3))"
       ],
       "metadata": {
-        "id": "Psq5hnVSyQMv",
-        "outputId": "06becd54-ce29-4e10-d4ba-541863f0baa2",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "Psq5hnVSyQMv",
+        "outputId": "06becd54-ce29-4e10-d4ba-541863f0baa2"
       },
       "execution_count": 44,
       "outputs": [
@@ -3128,11 +3128,11 @@
         "print(min, max)"
       ],
       "metadata": {
-        "id": "nBPtyQXFyURP",
-        "outputId": "010c0dcc-f8a4-4b73-e80c-7d67be91bec3",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "nBPtyQXFyURP",
+        "outputId": "010c0dcc-f8a4-4b73-e80c-7d67be91bec3"
       },
       "execution_count": 45,
       "outputs": [
@@ -3153,12 +3153,12 @@
         "plt.hist(L)"
       ],
       "metadata": {
-        "id": "7JLdCtH6yY8S",
-        "outputId": "3b3cc757-0be9-441d-a53f-ee63f13cf34a",
         "colab": {
           "base_uri": "https://localhost:8080/",
           "height": 521
-        }
+        },
+        "id": "7JLdCtH6yY8S",
+        "outputId": "3b3cc757-0be9-441d-a53f-ee63f13cf34a"
       },
       "execution_count": 46,
       "outputs": [
