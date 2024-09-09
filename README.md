@@ -2,7 +2,7 @@
 # [lab 01](https://colab.research.google.com/drive/1VDW49gBQTARk6pkUOXOmWotTR1hC58M_): Implement basic data structures of Numpy,pandas,Matplotib and Access Data from sources .
 # [lab 02](https://colab.research.google.com/drive/1FMsp2XmNk7oN9tZn2FSH69NIRD5l52nR): Implement AI Search using Breadth First, Depth First and A* Search Algorithm using Python
 # [lab 03](https://colab.research.google.com/drive/1P-mTldGD4Mk0iqN1f1s_KE54BaVbuCmq#scrollTo=Zr1EtqQOviDa):Implement AI Game Strategy 
-# [Lab 04](): Implement Linear Regression using Boston Housing Data
+# [Lab 04](https://colab.research.google.com/drive/1HNuXKHDJ-ryWyHmzqIcnt-KxPY4hHb2Z#scrollTo=7JLdCtH6yY8S): Implement Linear Regression using Boston Housing Data
 # [Lab 05](): Implement Logistic Regression using Titanic Ship Data
 # [Lab 06](): Implement K-Nearest Neighbor Classification using Classified Manufacturing Dataset
 # [Lab 07](): Implement Support Vector Machine using Breast Cancer Data
