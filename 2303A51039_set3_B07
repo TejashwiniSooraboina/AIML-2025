@@ -1,0 +1,719 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMu+LYgD7In0FTmvD82mJ2K",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/TejashwiniSooraboina/AIML-2025/blob/main/2303A51039_set3_B07\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "prediction of startup oppurtunities in Turkish Business\n",
+        "Q1.identify the top-10 Startups in turkey\n",
+        "Q2.Find the Max and min crowdsourced funding obtained by turkey\n",
+        "Q3.Name the gender which has acquired the most funding for startups\n",
+        "Q4.Identify the Top 5 cities where startup is most\n",
+        "Q5.Name the top 5 technologies popular in turkish startups.\n",
+        "Q6.Apply either classification or clustering or Regression Model and evaluate the accuracy ,error metrics of the model."
+      ],
+      "metadata": {
+        "id": "UYXeyaNyTe_b"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "from sklearn.cluster import KMeans\n",
+        "from sklearn.preprocessing import StandardScaler\n",
+        "from sklearn.metrics import silhouette_score\n",
+        "import numpy as np\n"
+      ],
+      "metadata": {
+        "id": "ZDVPP4ZZVXh7"
+      },
+      "execution_count": 22,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.read_csv('startup_funding.csv')\n",
+        "# Example dataset of crowdsourced funding amounts (in USD)\n",
+        "crowdsourced_funding = [1200, 4500, 3500, 8000, 1500, 7000, 2500]\n",
+        "\n",
+        "# Find the maximum and minimum funding\n",
+        "max_funding = max(crowdsourced_funding)\n",
+        "min_funding = min(crowdsourced_funding)\n",
+        "\n",
+        "print(\"Maximum Crowdsourced Funding:\", max_funding)\n",
+        "print(\"Minimum Crowdsourced Funding:\", min_funding)\n",
+        "\n",
+        "print(f\"Maximum Crowdsourced Funding: ${max_funding:,.2f}\")\n",
+        "print(f\"Minimum Crowdsourced Funding: ${min_funding:,.2f}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EOeWboTKa4Bz",
+        "outputId": "a7525af1-e89f-4b95-e745-60f5a5faa5e9"
+      },
+      "execution_count": 39,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Maximum Crowdsourced Funding: 8000\n",
+            "Minimum Crowdsourced Funding: 1200\n",
+            "Maximum Crowdsourced Funding: $8,000.00\n",
+            "Minimum Crowdsourced Funding: $1,200.00\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.read_csv('/content/50_Startups.csv')\n",
+        "df.head()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 206
+        },
+        "id": "HAPTxzxmViED",
+        "outputId": "7b5c7476-88b6-41be-d8a4-966cd0befbb4"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "   R&D Spend  Administration  Marketing Spend       State     Profit\n",
+              "0  165349.20       136897.80        471784.10    New York  192261.83\n",
+              "1  162597.70       151377.59        443898.53  California  191792.06\n",
+              "2  153441.51       101145.55        407934.54     Florida  191050.39\n",
+              "3  144372.41       118671.85        383199.62    New York  182901.99\n",
+              "4  142107.34        91391.77        366168.42     Florida  166187.94"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-e03db2eb-19f3-4753-b496-8c89803fd1b8\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>R&amp;D Spend</th>\n",
+              "      <th>Administration</th>\n",
+              "      <th>Marketing Spend</th>\n",
+              "      <th>State</th>\n",
+              "      <th>Profit</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>165349.20</td>\n",
+              "      <td>136897.80</td>\n",
+              "      <td>471784.10</td>\n",
+              "      <td>New York</td>\n",
+              "      <td>192261.83</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>162597.70</td>\n",
+              "      <td>151377.59</td>\n",
+              "      <td>443898.53</td>\n",
+              "      <td>California</td>\n",
+              "      <td>191792.06</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>153441.51</td>\n",
+              "      <td>101145.55</td>\n",
+              "      <td>407934.54</td>\n",
+              "      <td>Florida</td>\n",
+              "      <td>191050.39</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>144372.41</td>\n",
+              "      <td>118671.85</td>\n",
+              "      <td>383199.62</td>\n",
+              "      <td>New York</td>\n",
+              "      <td>182901.99</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>142107.34</td>\n",
+              "      <td>91391.77</td>\n",
+              "      <td>366168.42</td>\n",
+              "      <td>Florida</td>\n",
+              "      <td>166187.94</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-e03db2eb-19f3-4753-b496-8c89803fd1b8')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-e03db2eb-19f3-4753-b496-8c89803fd1b8 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-e03db2eb-19f3-4753-b496-8c89803fd1b8');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "<div id=\"df-030dbd3c-d979-4923-9119-87f17659e7d0\">\n",
+              "  <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-030dbd3c-d979-4923-9119-87f17659e7d0')\"\n",
+              "            title=\"Suggest charts\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "     width=\"24px\">\n",
+              "    <g>\n",
+              "        <path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z\"/>\n",
+              "    </g>\n",
+              "</svg>\n",
+              "  </button>\n",
+              "\n",
+              "<style>\n",
+              "  .colab-df-quickchart {\n",
+              "      --bg-color: #E8F0FE;\n",
+              "      --fill-color: #1967D2;\n",
+              "      --hover-bg-color: #E2EBFA;\n",
+              "      --hover-fill-color: #174EA6;\n",
+              "      --disabled-fill-color: #AAA;\n",
+              "      --disabled-bg-color: #DDD;\n",
+              "  }\n",
+              "\n",
+              "  [theme=dark] .colab-df-quickchart {\n",
+              "      --bg-color: #3B4455;\n",
+              "      --fill-color: #D2E3FC;\n",
+              "      --hover-bg-color: #434B5C;\n",
+              "      --hover-fill-color: #FFFFFF;\n",
+              "      --disabled-bg-color: #3B4455;\n",
+              "      --disabled-fill-color: #666;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart {\n",
+              "    background-color: var(--bg-color);\n",
+              "    border: none;\n",
+              "    border-radius: 50%;\n",
+              "    cursor: pointer;\n",
+              "    display: none;\n",
+              "    fill: var(--fill-color);\n",
+              "    height: 32px;\n",
+              "    padding: 0;\n",
+              "    width: 32px;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart:hover {\n",
+              "    background-color: var(--hover-bg-color);\n",
+              "    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "    fill: var(--button-hover-fill-color);\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart-complete:disabled,\n",
+              "  .colab-df-quickchart-complete:disabled:hover {\n",
+              "    background-color: var(--disabled-bg-color);\n",
+              "    fill: var(--disabled-fill-color);\n",
+              "    box-shadow: none;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-spinner {\n",
+              "    border: 2px solid var(--fill-color);\n",
+              "    border-color: transparent;\n",
+              "    border-bottom-color: var(--fill-color);\n",
+              "    animation:\n",
+              "      spin 1s steps(1) infinite;\n",
+              "  }\n",
+              "\n",
+              "  @keyframes spin {\n",
+              "    0% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "      border-left-color: var(--fill-color);\n",
+              "    }\n",
+              "    20% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    30% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    40% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    60% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    80% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "    90% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "  }\n",
+              "</style>\n",
+              "\n",
+              "  <script>\n",
+              "    async function quickchart(key) {\n",
+              "      const quickchartButtonEl =\n",
+              "        document.querySelector('#' + key + ' button');\n",
+              "      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.\n",
+              "      quickchartButtonEl.classList.add('colab-df-spinner');\n",
+              "      try {\n",
+              "        const charts = await google.colab.kernel.invokeFunction(\n",
+              "            'suggestCharts', [key], {});\n",
+              "      } catch (error) {\n",
+              "        console.error('Error during call to suggestCharts:', error);\n",
+              "      }\n",
+              "      quickchartButtonEl.classList.remove('colab-df-spinner');\n",
+              "      quickchartButtonEl.classList.add('colab-df-quickchart-complete');\n",
+              "    }\n",
+              "    (() => {\n",
+              "      let quickchartButtonEl =\n",
+              "        document.querySelector('#df-030dbd3c-d979-4923-9119-87f17659e7d0 button');\n",
+              "      quickchartButtonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "    })();\n",
+              "  </script>\n",
+              "</div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df",
+              "summary": "{\n  \"name\": \"df\",\n  \"rows\": 50,\n  \"fields\": [\n    {\n      \"column\": \"R&D Spend\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 45902.25648230753,\n        \"min\": 0.0,\n        \"max\": 165349.2,\n        \"num_unique_values\": 49,\n        \"samples\": [\n          91992.39,\n          1000.23,\n          0.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Administration\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 28017.802755488683,\n        \"min\": 51283.14,\n        \"max\": 182645.56,\n        \"num_unique_values\": 50,\n        \"samples\": [\n          135495.07,\n          82982.09,\n          115641.28\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Marketing Spend\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 122290.31072584528,\n        \"min\": 0.0,\n        \"max\": 471784.1,\n        \"num_unique_values\": 48,\n        \"samples\": [\n          353183.81,\n          172795.67,\n          134050.07\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"State\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"New York\",\n          \"California\",\n          \"Florida\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Profit\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 40306.18033765055,\n        \"min\": 14681.4,\n        \"max\": 192261.83,\n        \"num_unique_values\": 50,\n        \"samples\": [\n          134307.35,\n          81005.76,\n          99937.59\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "data = {\n",
+        "    \"gender\": [\"Male\", \"Female\", \"Male\", \"Female\", \"Male\"],\n",
+        "    \"funding\": [5000, 7000, 8000, 4000, 3000],\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "funding_by_gender = df.groupby(\"gender\")[\"funding\"].sum()\n",
+        "\n",
+        "most_funded_gender = funding_by_gender.idxmax()\n",
+        "most_funding_amount = funding_by_gender.max()\n",
+        "\n",
+        "print(\"Gender with the most funding:\", most_funded_gender)\n",
+        "print(\"Total funding:\", most_funding_amount)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TqMdFI7Nhdaq",
+        "outputId": "39c929d8-42b7-46ef-ca7a-64deb0cc3136"
+      },
+      "execution_count": 40,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Gender with the most funding: Male\n",
+            "Total funding: 16000\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {\n",
+        "    'Startup': ['Getir', 'Trendyol', 'Peak Games', 'Modanisa', 'Insider', 'BiTaksi', 'Iyzico', 'Scotty', 'Hepsiburada', 'Picus Security'],\n",
+        "    'Funding (Million $)': [2500, 1800, 1750, 50, 105, 10, 165, 25, 200, 30],\n",
+        "    'City': ['Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul'],\n",
+        "    'Sector': ['Delivery', 'E-commerce', 'Gaming', 'E-commerce', 'AI', 'Transport', 'Fintech', 'Transport', 'E-commerce', 'Cybersecurity']\n",
+        "}\n",
+        "print(data)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yO2QLmI_XZJ3",
+        "outputId": "939218cd-4867-412b-eee9-2700d7737ceb"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'Startup': ['Getir', 'Trendyol', 'Peak Games', 'Modanisa', 'Insider', 'BiTaksi', 'Iyzico', 'Scotty', 'Hepsiburada', 'Picus Security'], 'Funding (Million $)': [2500, 1800, 1750, 50, 105, 10, 165, 25, 200, 30], 'City': ['Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul', 'Istanbul'], 'Sector': ['Delivery', 'E-commerce', 'Gaming', 'E-commerce', 'AI', 'Transport', 'Fintech', 'Transport', 'E-commerce', 'Cybersecurity']}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.DataFrame(data)\n",
+        "df_encoded = pd.get_dummies(df[['City', 'Sector']], drop_first=True)\n",
+        "features = pd.concat([df[['Funding (Million $)']], df_encoded], axis=1)\n",
+        "print(df)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ef5sBS9NXboy",
+        "outputId": "149c2be8-cb9d-473a-d5ad-3b6dd8d1f6e7"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "          Startup  Funding (Million $)      City         Sector\n",
+            "0           Getir                 2500  Istanbul       Delivery\n",
+            "1        Trendyol                 1800  Istanbul     E-commerce\n",
+            "2      Peak Games                 1750  Istanbul         Gaming\n",
+            "3        Modanisa                   50  Istanbul     E-commerce\n",
+            "4         Insider                  105  Istanbul             AI\n",
+            "5         BiTaksi                   10  Istanbul      Transport\n",
+            "6          Iyzico                  165  Istanbul        Fintech\n",
+            "7          Scotty                   25  Istanbul      Transport\n",
+            "8     Hepsiburada                  200  Istanbul     E-commerce\n",
+            "9  Picus Security                   30  Istanbul  Cybersecurity\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "scaler = StandardScaler()\n",
+        "features_scaled = scaler.fit_transform(features)\n",
+        "print(features_scaled)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "V_3d56BwXg1P",
+        "outputId": "1dec8f6e-71bb-4b7f-c21d-bd9db19c141c"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 2.02406138 -0.33333333  3.         -0.65465367 -0.33333333 -0.33333333\n",
+            "  -0.5       ]\n",
+            " [ 1.25257052 -0.33333333 -0.33333333  1.52752523 -0.33333333 -0.33333333\n",
+            "  -0.5       ]\n",
+            " [ 1.19746403 -0.33333333 -0.33333333 -0.65465367 -0.33333333  3.\n",
+            "  -0.5       ]\n",
+            " [-0.67615663 -0.33333333 -0.33333333  1.52752523 -0.33333333 -0.33333333\n",
+            "  -0.5       ]\n",
+            " [-0.61553949 -0.33333333 -0.33333333 -0.65465367 -0.33333333 -0.33333333\n",
+            "  -0.5       ]\n",
+            " [-0.72024182 -0.33333333 -0.33333333 -0.65465367 -0.33333333 -0.33333333\n",
+            "   2.        ]\n",
+            " [-0.54941171 -0.33333333 -0.33333333 -0.65465367  3.         -0.33333333\n",
+            "  -0.5       ]\n",
+            " [-0.70370988 -0.33333333 -0.33333333 -0.65465367 -0.33333333 -0.33333333\n",
+            "   2.        ]\n",
+            " [-0.51083716 -0.33333333 -0.33333333  1.52752523 -0.33333333 -0.33333333\n",
+            "  -0.5       ]\n",
+            " [-0.69819923  3.         -0.33333333 -0.65465367 -0.33333333 -0.33333333\n",
+            "  -0.5       ]]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "kmeans = KMeans(n_clusters=3, random_state=42)\n",
+        "clusters = kmeans.fit_predict(features_scaled)\n",
+        "print(clusters)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mNQhJTA9XlGF",
+        "outputId": "94e57068-4b7b-4baa-f8b0-7884e27c9ce2"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2 0 0 0 0 0 1 0 0 0]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df['Cluster'] = clusters"
+      ],
+      "metadata": {
+        "id": "LoNzlkRcXr0F"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "silhouette_avg = silhouette_score(features_scaled, clusters)\n",
+        "print(f\"Silhouette Score: {silhouette_avg}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "T0umlIkLXtKq",
+        "outputId": "12194f3e-9cd5-420e-b667-1128b3e40b10"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Silhouette Score: 0.17018413301572796\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(df)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pAmWMehZX7jv",
+        "outputId": "70a62eb4-2f5f-4542-edf4-eaaf4e9a1834"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "          Startup  Funding (Million $)      City         Sector  Cluster\n",
+            "0           Getir                 2500  Istanbul       Delivery        2\n",
+            "1        Trendyol                 1800  Istanbul     E-commerce        0\n",
+            "2      Peak Games                 1750  Istanbul         Gaming        0\n",
+            "3        Modanisa                   50  Istanbul     E-commerce        0\n",
+            "4         Insider                  105  Istanbul             AI        0\n",
+            "5         BiTaksi                   10  Istanbul      Transport        0\n",
+            "6          Iyzico                  165  Istanbul        Fintech        1\n",
+            "7          Scotty                   25  Istanbul      Transport        0\n",
+            "8     Hepsiburada                  200  Istanbul     E-commerce        0\n",
+            "9  Picus Security                   30  Istanbul  Cybersecurity        0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.linear_model import LinearRegression\n",
+        "from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n",
+        "\n",
+        "data = {\n",
+        "    \"Experience (years)\": [1, 3, 5, 7, 9, 11, 13, 15],\n",
+        "    \"Funding (in $1000)\": [50, 80, 100, 130, 150, 180, 200, 230],\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "X = df[[\"Experience (years)\"]]\n",
+        "y = df[\"Funding (in $1000)\"]\n",
+        "\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n",
+        "\n",
+        "model = LinearRegression()\n",
+        "model.fit(X_train, y_train)\n",
+        "\n",
+        "y_pred = model.predict(X_test)\n",
+        "\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mse = mean_squared_error(y_test, y_pred)\n",
+        "rmse = np.sqrt(mse)\n",
+        "r2 = r2_score(y_test, y_pred)\n",
+        "\n",
+        "print(\"Model Evaluation Metrics:\")\n",
+        "print(f\"Mean Absolute Error (MAE): {mae:.2f}\")\n",
+        "print(f\"Mean Squared Error (MSE): {mse:.2f}\")\n",
+        "print(f\"Root Mean Squared Error (RMSE): {rmse:.2f}\")\n",
+        "print(f\"R-squared (R2): {r2:.2f}\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6Ds3Axdfh1pa",
+        "outputId": "0fab770f-c5b5-44bb-eea8-f3d292e9e9f3"
+      },
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Model Evaluation Metrics:\n",
+            "Mean Absolute Error (MAE): 3.60\n",
+            "Mean Squared Error (MSE): 13.60\n",
+            "Root Mean Squared Error (RMSE): 3.69\n",
+            "R-squared (R2): 0.99\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
